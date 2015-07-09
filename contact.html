@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Istanbul Tour Company</title>
+	<link rel="stylesheet" href="css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="external/matchmedia.js"></script>
+	<script src="picturefill.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+</head>
+
+<body>
+	
+	<div class="container clearfix">
+    <a href="http://www.johneddleman.com" class="portfolio">Return to Portfolio</a>
+		<div id="logo" class="grid_4">
+			<object data="img/Istanbul_Tours2.png" type="image/png" class="logo">
+				<a href="logo.jpg" >
+					<!--[if lte IE 8 ]-->
+					<img src="img/Istanbul_Tours2.png" alt="Istanbul Logo">
+					<!--![endif]-->
+				</a>
+			</object>
+
+		</div>
+		<div id="nav" class="grid_8 omega" >
+			<ul>
+				<li class="about"><a href="index.html">About</a></li>
+				<li class="pricing"><a href="pricing.html">Tours & Prices</a></li>
+				<li class="locations"><a href="locations.html">Locations</a></li>
+				<li class="contact"><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</div>
+
+		<div class="grid_12">
+			<h1 class="hero">We have a variety of great tours that show you all the wonders of Istanbul!</h1>
+		</div>
+
+
+		<div id="form" class="grid_12 omega">
+			<h2>Contact the Istanbul Tour Company</h2>
+			<form action="contact.php" method="post">
+
+				<p>
+					<label for="name">Name:</label>
+					<input name="name" id="name" type="text" class="required">
+					<span>Please enter your name</span>
+				</p>
+
+				<p>
+					<label for="email">Email:</label>
+					<input name="email" id="email" type="text" class="required"> 
+					<span>Please enter a valid email address</span>
+				</p>
+
+				<p>
+					<label for="subject">Subject:</label>
+					<input name="subject" id="subject" type="text"> 
+					<span>Please enter your subject</span>
+				</p>
+
+				<p>
+					<label for="message">Message</label>
+					<textarea name="message" id="message" class="required"></textarea> 
+					<span>Please enter your message</span>
+				</p>
+				<p class="submit">
+                <label for="message">The email is not live.</label>
+					<input type="submit" value="Submit" class="btn-submit">
+				</p>
+			</form>
+
+			
+		</div>
+
+
+
+		<div id="footer" class="grid_12">
+			<div id="about" class="grid_7">
+				<h2>Our Story</h2>
+				<p>Istanbul Tours started out as a dream when the husband wife duo Ashley &amp; Joseph first visted Istanbul in 1999. They fell in love with the city, and one year later they returned to set up Istanbul Tours. They are well versed in the history of their new city and genuinly enjoy showing you its highlights and secrets.</p>
+				<p><a href="#" class="btn-small">Read More</a></p>
+			</div>
+			
+			
+			<div id="contact" class="grid_5 omega">
+				<h2>Tour with Us</h2>
+				<p>Call us: <span class="contact">1-800-XXX-XXXX</span><br>
+					Email us: <a href="#">test@notactive.com</a></p>
+					
+					<p>Follow us on Facebook &amp; Twitter, to see our latest tour offerings. We even take requests!</p>		
+					
+					<object data="img/facebook.svg" type="image/svg+xml">
+						<a href="facebook.svg">
+							<!--[if lte IE 8 ]-->
+							<img src="img/facebook.gif" alt="Facebook">
+							<!--![endif]-->
+						</a>
+					</object>
+
+					<object data="img/twitter.svg" type="image/svg+xml">
+						<a href="twitter.svg">
+							<!--[if lte IE 8 ]-->
+							<img src="img/twitter.gif" alt="Twitter">
+							<!--![endif]-->
+						</a>
+					</object>
+				</div>
+				
+				<div id="copyright" class="grid_12">
+					<p>© 2014 Istanbul Tour Company. All Rights Reserved.</p>
+				</div>
+
+			</div>
+			
+		</div>
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/validEmail.js"></script>
+		<script type="text/javascript">
+			var $submit = $(".submit input");
+			var $required = $(".required");
+			function containsBlanks(){
+				var blanks = $required.map(function(){ return $(this).val() == "";});
+				return $.inArray(true, blanks) != -1;
+			}
+
+			function requiredFilledIn(){
+				if(containsBlanks() || !$("#email").validEmail()) 
+					$submit.attr("disabled","disabled");
+				else 
+					$submit.removeAttr("disabled");
+			}
+
+			$("#form span").hide();
+			$("input,textarea").focus(function(){
+				$(this).next().fadeIn("slow");
+			}).blur(function(){
+				$(this).next().fadeOut("slow");
+			}).keyup(function(){
+				//Check all required fields.
+				requiredFilledIn();
+			});
+
+			$("#email").validEmail({on:"keyup", success:function(){
+ 				$(this).next().removeClass("error").addClass("valid");
+			}, failure:function(){
+				$(this).next().removeClass("valid").addClass("error");
+			}});
+
+			requiredFilledIn();
+		</script>
+	</body>
+	</html>
